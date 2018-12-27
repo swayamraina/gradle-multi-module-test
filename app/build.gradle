@@ -1,0 +1,42 @@
+jar {
+  baseName = 'app'
+  version = '1.0.0'
+}
+
+dependencies {
+  compile project(':core')
+  compile project(':db')
+}
+
+mainClassName = 'MyApp'
+
+//task readFile {
+//  doFirst {
+//    println 'entering read file task'
+//  }
+//  doLast {
+//    File file = file('src/main/resources/greetings.txt')
+//    println ''
+//    file.readLines().each {
+//      println it
+//    }
+//    println 'existing read file task'
+//  }
+//}
+
+
+jar {
+    manifest {
+        attributes("Implementation-Title": "Gradle",
+                "Implementation-Version": version,
+                'Main-Class': 'com.airtel.base.MyApp')
+    }
+}
+
+// setup source code path
+sourceSets {
+  app_src {
+    java.srcDir file('src/main/java')
+    resources.srcDir('src/main/resources')
+  }
+}

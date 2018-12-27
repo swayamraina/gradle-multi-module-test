@@ -1,0 +1,7 @@
+Hello!
+ 
+Your task 3 is successfull!!
+You can now proceed ahead and save the Galaxy.
+
+with love,
+Gradle (aka groovy)

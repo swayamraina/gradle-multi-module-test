@@ -1,0 +1,14 @@
+jar {
+  baseName = 'db'
+  version = '1.0.0'
+}
+
+mainClassName = 'DB'
+
+// setup source directory
+sourceSets {
+  db_src {
+    java.srcDir file('src/main/java')
+    resources.srcDir('src/main/resources')
+  }
+}

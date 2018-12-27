@@ -1,0 +1,30 @@
+// setup jar details
+jar {
+  baseName = 'core'
+  version = '1.0.0'
+}
+
+// setup source path
+sourceSets {
+  core_src {
+    java.srcDir file('src/main/java')
+    resources.srcDir('src/main/resources')
+  }
+}
+
+mainClassName = 'Core'
+
+println "IN core"
+task readFile {
+  doFirst {
+    println 'entering read file task'
+  }
+//  doLast {
+    File file = file('src/main/resources/greetings.txt')
+    println ''
+    file.readLines().each {
+      println it
+    }
+    println 'existing read file task'
+  //}
+}

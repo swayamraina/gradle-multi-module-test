@@ -1,0 +1,42 @@
+description = """
+Example project for a Gradle build
+Project name: ${project.name}
+"""
+apply plugin: 'java'
+
+jar {
+  baseName = 'airtel'
+  version = '1.0.0'
+}
+
+
+
+configurations {
+    // configuration that holds jars to include in the jar
+    extraLibs
+}
+
+dependencies {
+    extraLibs project(':app')
+    configurations.compile.extendsFrom(configurations.extraLibs)
+}
+
+jar {
+    manifest {
+        attributes("Implementation-Title": "Gradle",
+                "Implementation-Version": version,
+                'Main-Class': 'com.airtel.base.MyApp')
+    }
+    from {
+        configurations.extraLibs.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+subprojects {
+  apply plugin: 'java'
+  apply plugin: 'application'
+  sourceCompatibility = 1.8
+  repositories {
+    mavenCentral()
+  }
+}
